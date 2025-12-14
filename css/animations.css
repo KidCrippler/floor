@@ -1,0 +1,332 @@
+/* Animations - transitions, effects, and visual feedback */
+
+/* Warning Pulse Animation */
+@keyframes warningPulse {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(245, 101, 101, 0.8);
+        border-color: #f56565;
+    }
+    50% {
+        box-shadow: 0 0 80px rgba(245, 101, 101, 1);
+        border-color: #fc8181;
+    }
+}
+
+/* Correct Answer Flash */
+@keyframes correctFlash {
+    0% {
+        background: white;
+    }
+    50% {
+        background: #48bb78;
+        transform: scale(1.05);
+    }
+    100% {
+        background: white;
+    }
+}
+
+.question-container.correct {
+    animation: correctFlash 0.6s ease-in-out;
+}
+
+/* Question Fade In */
+@keyframes questionFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.question-content {
+    animation: questionFadeIn 0.5s ease-out;
+}
+
+/* Answer Overlay Fade In */
+@keyframes answerFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.answer-overlay:not(.hidden) {
+    animation: answerFadeIn 0.3s ease-out;
+}
+
+/* Timer Switch Animation */
+@keyframes timerActivate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1.05);
+    }
+}
+
+.timer-box.activate {
+    animation: timerActivate 0.5s ease-out;
+}
+
+/* Victory Screen Confetti Effect */
+@keyframes victoryZoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.victory-content {
+    animation: victoryZoomIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Loading Spinner */
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Pause Menu Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.pause-menu:not(.hidden) {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Number Count Animation (for timer updates) */
+@keyframes numberUpdate {
+    0% {
+        transform: translateY(-5px);
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Shake Animation (for errors or urgent warnings) */
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    10%, 30%, 50%, 70%, 90% {
+        transform: translateX(-10px);
+    }
+    20%, 40%, 60%, 80% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Glow Effect for Active Timer */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 40px rgba(102, 126, 234, 0.8), 0 0 80px rgba(102, 126, 234, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 50px rgba(102, 126, 234, 1), 0 0 100px rgba(102, 126, 234, 0.6);
+    }
+}
+
+.timer-box.active {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Active Indicator Pulse */
+@keyframes indicatorPulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+/* Arrow Bounce Animation */
+@keyframes arrowBounce {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0);
+    }
+    50% {
+        transform: translateY(-50%) translateX(15px);
+    }
+}
+
+/* Arrow Bounce Animation for Left Arrow */
+.left-arrow {
+    animation-name: arrowBounceLeft !important;
+}
+
+@keyframes arrowBounceLeft {
+    0%, 100% {
+        transform: translateY(-50%) translateX(0);
+    }
+    50% {
+        transform: translateY(-50%) translateX(-15px);
+    }
+}
+
+/* Skip Penalty Pulse */
+@keyframes skipPulse {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+
+.answer-overlay:not(.hidden) {
+    animation: answerFadeIn 0.3s ease-out, skipPulse 1s ease-in-out 0.3s infinite;
+}
+
+/* Smooth Transitions */
+.timer-display,
+.question-content,
+.info-value {
+    transition: all 0.3s ease;
+}
+
+/* Button Hover Effects */
+.pause-button,
+.play-again-button {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pause-button:active,
+.play-again-button:active {
+    transform: scale(0.95);
+}
+
+/* Fade Out Animation */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.3s ease-out forwards;
+}
+
+/* Slide In from Top */
+@keyframes slideInFromTop {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.info-bar {
+    animation: slideInFromTop 0.5s ease-out 0.3s backwards;
+}
+
+/* Timer boxes slide in */
+@keyframes slideInFromSide {
+    from {
+        transform: translateX(var(--slide-from));
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.timer-right {
+    --slide-from: 100px;
+    animation: slideInFromSide 0.6s ease-out;
+}
+
+.timer-left {
+    --slide-from: -100px;
+    animation: slideInFromSide 0.6s ease-out;
+}
+
+/* Press Key Bounce Animation */
+@keyframes pressKeyBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Countdown Pulse Animation */
+@keyframes countdownPulse {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Toast Slide In Animation */
+@keyframes toastSlideIn {
+    from {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Toast Fade Out Animation */
+@keyframes toastFadeOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(150%);
+        opacity: 0;
+    }
+}
+
+.correct-answer-toast.fade-out {
+    animation: toastFadeOut 0.3s ease-in forwards;
+}
+

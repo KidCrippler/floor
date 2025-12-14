@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>הגדרות דו-קרב טריוויה</title>
+    <link rel="icon" type="image/png" href="assets/grid.png">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .setup-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: 'Assistant', sans-serif;
+            transition: border-color 0.3s;
+            text-align: right;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-left: 8px;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .start-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 30px;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-button:active {
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            font-weight: 700;
+        }
+
+        .loading {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="setup-container">
+        <h1>⚡ הגדרות דו-קרב טריוויה</h1>
+        
+        <form id="setupForm">
+            <div class="form-group">
+                <label for="category">קטגוריה:</label>
+                <select id="category" name="category" required>
+                    <option value="">טוען קטגוריות...</option>
+                </select>
+            </div>
+
+            <div class="section-title">שמות מתמודדים</div>
+
+            <div class="form-group">
+                <label for="nameRight">שם מתמודד ימין:</label>
+                <input type="text" id="nameRight" name="nameRight" value="ימין" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nameLeft">שם מתמודד שמאל:</label>
+                <input type="text" id="nameLeft" name="nameLeft" value="שמאל" required>
+            </div>
+
+            <div class="section-title">זמני משחק</div>
+
+            <div class="form-group">
+                <label for="timeRight">זמן התחלתי מתמודד ימין (שניות):</label>
+                <input type="number" id="timeRight" name="timeRight" value="15" min="10" max="300" required>
+            </div>
+
+            <div class="form-group">
+                <label for="timeLeft">זמן התחלתי מתמודד שמאל (שניות):</label>
+                <input type="number" id="timeLeft" name="timeLeft" value="15" min="10" max="300" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skipPenalty">עונש דילוג (שניות):</label>
+                <input type="number" id="skipPenalty" name="skipPenalty" value="3" min="1" max="10" required>
+            </div>
+
+            <div class="section-title">מי מתחיל?</div>
+
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="startRight" name="startingContestant" value="RIGHT" checked>
+                    <label for="startRight">ימין</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="startLeft" name="startingContestant" value="LEFT">
+                    <label for="startLeft">שמאל</label>
+                </div>
+            </div>
+
+            <button type="submit" class="start-button">התחל משחק 🎮</button>
+        </form>
+    </div>
+
+    <script src="js/questionsData.js"></script>
+    <script src="js/setup.js"></script>
+</body>
+</html>
+

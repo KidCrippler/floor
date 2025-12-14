@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 8px;
+            border: 2px solid #667eea;
+            background: white;
+        }
+        button:hover {
+            background: #667eea;
+            color: white;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f0f0f0;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .warning { background: #fff3cd; color: #856404; }
+    </style>
+</head>
+<body>
+    <h1>🔊 Audio Test Page</h1>
+    
+    <div class="status" id="status">
+        <p>Click the buttons below to test your audio files:</p>
+    </div>
+
+    <div>
+        <h2>Test Individual Files:</h2>
+        <button onclick="testCountdown()">Test countdown.mp3</button>
+        <button onclick="testBackground()">Test background.mp3</button>
+    </div>
+
+    <div>
+        <h2>Test Volume Levels:</h2>
+        <button onclick="testVolumes()">Check Volumes</button>
+    </div>
+
+    <div>
+        <h2>Browser Info:</h2>
+        <div id="browserInfo"></div>
+    </div>
+
+    <script>
+        const status = document.getElementById('status');
+        const browserInfo = document.getElementById('browserInfo');
+
+        // Show browser info
+        browserInfo.innerHTML = `
+            <p><strong>Browser:</strong> ${navigator.userAgent}</p>
+            <p><strong>Audio support:</strong> ${typeof Audio !== 'undefined' ? '✅ Yes' : '❌ No'}</p>
+        `;
+
+        function log(message, type = 'info') {
+            const div = document.createElement('div');
+            div.className = `status ${type}`;
+            div.innerHTML = `<p>${message}</p>`;
+            status.appendChild(div);
+            console.log(message);
+        }
+
+        function testCountdown() {
+            log('Testing countdown.mp3...', 'info');
+            const audio = new Audio('sounds/countdown.mp3');
+            
+            audio.addEventListener('canplaythrough', () => {
+                log('✅ countdown.mp3 loaded successfully!', 'success');
+            });
+            
+            audio.addEventListener('error', (e) => {
+                log(`❌ Error loading countdown.mp3: ${e.type}`, 'error');
+            });
+            
+            audio.play().then(() => {
+                log('🔊 countdown.mp3 is playing!', 'success');
+            }).catch(err => {
+                log(`❌ Failed to play countdown.mp3: ${err.message}`, 'error');
+                log('💡 Try clicking the button again - browser might need user interaction first', 'warning');
+            });
+        }
+
+        function testBackground() {
+            log('Testing background.mp3...', 'info');
+            const audio = new Audio('sounds/background.mp3');
+            audio.loop = true;
+            audio.volume = 0.3;
+            
+            audio.addEventListener('canplaythrough', () => {
+                log('✅ background.mp3 loaded successfully!', 'success');
+            });
+            
+            audio.addEventListener('error', (e) => {
+                log(`❌ Error loading background.mp3: ${e.type}`, 'error');
+            });
+            
+            audio.play().then(() => {
+                log('🔊 background.mp3 is playing! (Click again to stop)', 'success');
+                
+                // Add stop button
+                const stopBtn = document.createElement('button');
+                stopBtn.textContent = 'Stop Background Music';
+                stopBtn.onclick = () => {
+                    audio.pause();
+                    audio.currentTime = 0;
+                    log('⏹️ Background music stopped', 'info');
+                    stopBtn.remove();
+                };
+                status.appendChild(stopBtn);
+            }).catch(err => {
+                log(`❌ Failed to play background.mp3: ${err.message}`, 'error');
+                log('💡 Try clicking the button again - browser might need user interaction first', 'warning');
+            });
+        }
+
+        function testVolumes() {
+            log('Testing volume levels...', 'info');
+            
+            const countdown = new Audio('sounds/countdown.mp3');
+            const background = new Audio('sounds/background.mp3');
+            
+            log(`countdown.mp3 volume: ${countdown.volume * 100}%`, 'info');
+            log(`background.mp3 volume: ${background.volume * 100}%`, 'info');
+            
+            // Check if files exist
+            countdown.addEventListener('canplaythrough', () => {
+                log('✅ countdown.mp3 file exists and is readable', 'success');
+            });
+            
+            background.addEventListener('canplaythrough', () => {
+                log('✅ background.mp3 file exists and is readable', 'success');
+            });
+            
+            countdown.addEventListener('error', () => {
+                log('❌ countdown.mp3 file not found or unreadable', 'error');
+            });
+            
+            background.addEventListener('error', () => {
+                log('❌ background.mp3 file not found or unreadable', 'error');
+            });
+        }
+
+        // Initial test on page load
+        log('Audio test page loaded. Click buttons to test.', 'info');
+        log('💡 If you hear nothing, check:', 'warning');
+        log('  1. Your computer volume is on', 'warning');
+        log('  2. Browser tab is not muted (check speaker icon on tab)', 'warning');
+        log('  3. Sound files are in the sounds/ folder', 'warning');
+    </script>
+</body>
+</html>
+
