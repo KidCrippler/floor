@@ -191,24 +191,221 @@ const QUESTIONS_DATA = {
   ],
   "חנוכה": [
     {
-      "type": "image",
-      "content": "images/chanukiah.jpg",
-      "answer": "חנוכיה"
+      "type": "text",
+      "content": "כמה ימים נמשך חג החנוכה?",
+      "answer": "שמונה ימים"
     },
     {
-      "type": "image",
-      "content": "images/dreidel.jpg",
-      "answer": "סביבון"
-    },
-    {
-      "type": "image",
-      "content": "images/sufganiyah.jpg",
+      "type": "text",
+      "content": "מהו המאכל המטוגן העגול של חנוכה?",
       "answer": "סופגניה"
     },
     {
+      "type": "text",
+      "content": "מהו המאכל המטוגן מתפוחי אדמה?",
+      "answer": "לביבה"
+    },
+    {
+      "type": "text",
+      "content": "מה פירוש האותיות נ ג ה פ על הסביבון?",
+      "answer": "נס גדול היה פה"
+    },
+    {
+      "type": "text",
+      "content": "איזה שיר מפורסם שרים בחנוכה?",
+      "answer": "מעוז צור"
+    },
+    {
+      "type": "text",
+      "content": "מי היה המלך היווני הרשע?",
+      "answer": "אנטיוכוס"
+    },
+    {
+      "type": "text",
+      "content": "כמה נרות מדליקים ביום השמיני (כולל שמש)?",
+      "answer": "תשעה"
+    },
+    {
+      "type": "text",
+      "content": "באיזה חודש עברי חל חנוכה?",
+      "answer": "כסלו"
+    },
+    {
+      "type": "text",
+      "content": "באיזה שמן הכי מהודר להדליק?",
+      "answer": "שמן זית"
+    },
+    {
+      "type": "text",
+      "content": "מהו הנס הקשור לכמות השמן?",
+      "answer": "נס פך השמן"
+    },
+    {
+      "type": "text",
+      "content": "לכמה ימים היה אמור להספיק השמן?",
+      "answer": "יום אחד"
+    },
+    {
+      "type": "text",
+      "content": "מי טיהר את בית המקדש מהפסלים?",
+      "answer": "יהודה המכבי"
+    },
+    {
+      "type": "text",
+      "content": "מה היה כינויו של יהודה?",
+      "answer": "המכבי"
+    },
+    {
+      "type": "text",
+      "content": "היכן מדליקים את החנוכייה בבית?",
+      "answer": "בחלון או בפתח"
+    },
+    {
+      "type": "text",
+      "content": "מי הנהיג את המרד ביוונים?",
+      "answer": "מתתיהו החשמונאי"
+    },
+    {
+      "type": "text",
+      "content": "כמה בנים היו למתתיהו הכהן?",
+      "answer": "חמישה"
+    },
+    {
+      "type": "text",
+      "content": "באיזו עיר פרץ מרד החשמונאים?",
+      "answer": "מודיעין"
+    },
+    {
+      "type": "text",
+      "content": "איזו אות מחליפה את פ' בסביבון בחוץ לארץ?",
+      "answer": "ש"
+    },
+    {
+      "type": "text",
+      "content": "מה שמה של האישה הגיבורה בחנוכה?",
+      "answer": "יהודית"
+    },
+    {
+      "type": "text",
+      "content": "כמה נרות מדליקים בסך הכל בכל החג?",
+      "answer": "44"
+    },
+    {
+      "type": "text",
+      "content": "מה היו ראשי התיבות על דגלו של יהודה?",
+      "answer": "מכב\"י"
+    },
+    {
+      "type": "text",
+      "content": "מהו שמו של ספר ההיסטוריה של החשמונאים?",
+      "answer": "ספר המכבים"
+    },
+    {
+      "type": "text",
+      "content": "מה היה תפקידם של החשמונאים במקדש?",
+      "answer": "כהנים"
+    },
+    {
+      "type": "text",
+      "content": "על שם מה נקרא חג החנוכה?",
+      "answer": "חנוכת המזבח"
+    },
+    {
+      "type": "text",
+      "content": "איך נקראו המתנגדים למתייוונים?",
+      "answer": "המכבים"
+    },
+    {
+      "type": "text",
+      "content": "מהו שם נוסף לחג החנוכה?",
+      "answer": "חג האורים"
+    },
+    {
+      "type": "text",
+      "content": "את ראשו של מי ערפה יהודית?",
+      "answer": "הולופרנס"
+    },
+    {
+      "type": "text",
+      "content": "באיזו מסכת בתלמוד מופיעים דיני חנוכה?",
+      "answer": "מסכת שבת"
+    },
+    {
+      "type": "text",
+      "content": "איזה קורבן ביטלו היוונים?",
+      "answer": "קורבן התמיד"
+    },
+    {
+      "type": "text",
+      "content": "מה הייתה בירת הממלכה הסלאוקית?",
+      "answer": "אנטיוכיה"
+    }
+  ],
+  "חנוכה - תמונות": [
+    {
       "type": "image",
-      "content": "images/gelt.jpg",
-      "answer": "דמי חנוכה"
+      "content": "images/hanukkah/Gemini_Generated_Image_23bngd23bngd23bn.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_2827fh2827fh2827.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_4s3w7i4s3w7i4s3w.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_7n4kpd7n4kpd7n4k.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_8pt0dk8pt0dk8pt0.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_9lt2j79lt2j79lt2.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_d2hn0td2hn0td2hn.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_dzx15ddzx15ddzx1.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_kt7wcokt7wcokt7w.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_njz1njz1njz1njz1.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_o2y184o2y184o2y1.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_t5652xt5652xt565.webp",
+      "answer": "תשובה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/Gemini_Generated_Image_uxqxhzuxqxhzuxqx.webp",
+      "answer": "תשובה"
     }
   ]
 };
