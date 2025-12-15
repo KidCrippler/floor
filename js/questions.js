@@ -7,6 +7,7 @@ const QuestionManager = (function() {
     let unusedQuestions = [];
     let currentQuestion = null;
     let category = '';
+    let isFirstPass = true;
 
     // Load questions from embedded data
     function loadQuestions(selectedCategory) {
@@ -31,7 +32,8 @@ const QuestionManager = (function() {
                     return;
                 }
 
-                // Initialize with shuffled questions
+                // Initialize with questions in original order
+                isFirstPass = true;
                 resetPool();
                 
                 console.log(`Loaded ${allQuestions.length} questions from category "${category}"`);
@@ -53,10 +55,17 @@ const QuestionManager = (function() {
         return shuffled;
     }
 
-    // Reset the question pool (reshuffle all questions)
+    // Reset the question pool (maintain order on first pass, shuffle on subsequent passes)
     function resetPool() {
-        unusedQuestions = shuffleArray(allQuestions);
-        console.log(`Question pool reset and shuffled: ${unusedQuestions.length} questions`);
+        if (isFirstPass) {
+            // First time: keep original order
+            unusedQuestions = [...allQuestions];
+            console.log(`Question pool initialized in original order: ${unusedQuestions.length} questions`);
+        } else {
+            // Subsequent times: shuffle for variety
+            unusedQuestions = shuffleArray(allQuestions);
+            console.log(`Question pool reset and shuffled: ${unusedQuestions.length} questions`);
+        }
     }
 
     // Get next question
@@ -64,11 +73,12 @@ const QuestionManager = (function() {
         // If we've used all questions, reset and reshuffle
         if (unusedQuestions.length === 0) {
             console.log('All questions used, reshuffling...');
+            isFirstPass = false; // Mark that we've completed the first pass
             resetPool();
         }
 
-        // Get the next question
-        currentQuestion = unusedQuestions.pop();
+        // Get the next question (shift to maintain order, not pop)
+        currentQuestion = unusedQuestions.shift();
         
         console.log(`Questions remaining in pool: ${unusedQuestions.length}`);
         
