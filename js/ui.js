@@ -91,6 +91,10 @@ const UI = (function() {
 
             // Loading screen
             loadingScreen: document.getElementById('loadingScreen'),
+            loadingText: document.getElementById('loadingText'),
+            loadingProgress: document.getElementById('loadingProgress'),
+            progressFill: document.getElementById('progressFill'),
+            progressText: document.getElementById('progressText'),
 
             // Ready screen
             readyScreen: document.getElementById('readyScreen'),
@@ -329,6 +333,37 @@ const UI = (function() {
         elements.loadingScreen.classList.add('hidden');
     }
 
+    // Show image preloading progress
+    function showPreloadingProgress(loaded, total) {
+        elements.loadingText.textContent = 'טוען תמונות...';
+        elements.loadingProgress.classList.remove('hidden');
+        
+        const percentage = (loaded / total) * 100;
+        elements.progressFill.style.width = percentage + '%';
+        elements.progressText.textContent = `${loaded} / ${total}`;
+    }
+
+    // Preload images with progress
+    async function preloadImages() {
+        const imageUrls = QuestionManager.getImageUrls();
+        
+        if (imageUrls.length === 0) {
+            console.log('No images to preload (text-only quiz)');
+            return;
+        }
+
+        console.log(`Found ${imageUrls.length} images to preload`);
+        
+        // Show progress UI
+        elements.loadingProgress.classList.remove('hidden');
+        elements.loadingText.textContent = 'טוען תמונות...';
+        
+        // Preload with progress callback
+        await QuestionManager.preloadImages(showPreloadingProgress);
+        
+        console.log('All images preloaded successfully!');
+    }
+
     // Show ready screen (Press any key to start)
     function showReadyScreen() {
         return new Promise((resolve) => {
@@ -483,7 +518,8 @@ const UI = (function() {
         hideLoadingScreen,
         showReadyScreen,
         showCountdown,
-        initializeGameDisplay
+        initializeGameDisplay,
+        preloadImages
     };
 })();
 
@@ -520,6 +556,10 @@ const UI = (function() {
         // Initialize keyboard controls
         console.log('Initializing keyboard controls...');
         KeyboardController.init();
+
+        // Preload all images
+        console.log('Preloading images...');
+        await UI.preloadImages();
 
         // Set up game display
         console.log('Setting up game display...');

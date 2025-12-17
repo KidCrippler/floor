@@ -105,6 +105,65 @@ const QuestionManager = (function() {
         return category;
     }
 
+    // Get all image URLs from current questions
+    function getImageUrls() {
+        return allQuestions
+            .filter(q => q.type === 'image')
+            .map(q => q.content);
+    }
+
+    // Preload all images
+    function preloadImages(onProgress) {
+        return new Promise((resolve) => {
+            const imageUrls = getImageUrls();
+            
+            if (imageUrls.length === 0) {
+                console.log('No images to preload');
+                resolve();
+                return;
+            }
+
+            console.log(`Starting to preload ${imageUrls.length} images...`);
+            
+            let loadedCount = 0;
+            const totalCount = imageUrls.length;
+            
+            // Track if all images completed
+            let completedCount = 0;
+            
+            const checkComplete = () => {
+                completedCount++;
+                if (completedCount === totalCount) {
+                    console.log(`Preloading complete! ${loadedCount}/${totalCount} images loaded successfully`);
+                    resolve();
+                }
+            };
+            
+            imageUrls.forEach((url) => {
+                const img = new Image();
+                
+                img.onload = () => {
+                    loadedCount++;
+                    console.log(`✓ Loaded: ${url} (${loadedCount}/${totalCount})`);
+                    if (onProgress) {
+                        onProgress(loadedCount, totalCount);
+                    }
+                    checkComplete();
+                };
+                
+                img.onerror = () => {
+                    console.warn(`✗ Failed to load: ${url}`);
+                    if (onProgress) {
+                        onProgress(loadedCount, totalCount);
+                    }
+                    checkComplete();
+                };
+                
+                img.src = url;
+            });
+        });
+    }
+
     // Public API
     return {
         loadQuestions,
@@ -112,7 +171,9 @@ const QuestionManager = (function() {
         getCurrentQuestion,
         getRemainingCount,
         getTotalCount,
-        getCategory
+        getCategory,
+        getImageUrls,
+        preloadImages
     };
 })();
 
