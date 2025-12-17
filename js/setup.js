@@ -3,6 +3,27 @@
 (function() {
     'use strict';
 
+    // Analyze questions to determine if category has text or image questions
+    function analyzeQuestions(categoryQuestions) {
+        let hasText = false;
+        let hasImage = false;
+        
+        for (const question of categoryQuestions) {
+            if (question.type === 'text') {
+                hasText = true;
+            } else if (question.type === 'image') {
+                hasImage = true;
+            }
+            
+            // Early exit if we found both
+            if (hasText && hasImage) {
+                break;
+            }
+        }
+        
+        return { hasText, hasImage };
+    }
+
     // Load categories from embedded data
     function loadCategories() {
         const categorySelect = document.getElementById('category');
@@ -10,6 +31,7 @@
         try {
             // Use embedded QUESTIONS_DATA (no file loading needed!)
             const questions = QUESTIONS_DATA;
+            const metadata = typeof QUIZ_METADATA !== 'undefined' ? QUIZ_METADATA : {};
             
             // Clear loading option
             categorySelect.innerHTML = '';
@@ -19,7 +41,25 @@
             categories.forEach(category => {
                 const option = document.createElement('option');
                 option.value = category;
-                option.textContent = category;
+                
+                // Analyze questions to determine content types
+                const questionAnalysis = analyzeQuestions(questions[category]);
+                
+                // Build badge string
+                let badges = '';
+                if (metadata[category]?.aiGenerated === true) {
+                    badges += ' 🤖';
+                }
+                if (questionAnalysis.hasText) {
+                    badges += ' 📝';
+                }
+                if (questionAnalysis.hasImage) {
+                    badges += ' 🖼️';
+                }
+                
+                // Simply append badges to category name
+                option.textContent = category + badges;
+                
                 categorySelect.appendChild(option);
             });
 

@@ -1,8 +1,21 @@
 // Embedded questions data - no file loading needed!
 // To add new questions, edit this file directly
 
+// Metadata: Mark quizzes with badges
+// - aiGenerated: true = 🤖 AI-generated quiz
+// Note: hasText and hasImage are calculated automatically from question content
+const QUIZ_METADATA = {
+  "חנוכה": { aiGenerated: true },
+  "גיאוגרפיה": { aiGenerated: true },
+  "היסטוריה": { aiGenerated: true },
+  "מדע": { aiGenerated: true },
+  "ספורט": { aiGenerated: true },
+  "קולנוע": { aiGenerated: true },
+  "מוזיקה": { aiGenerated: true }
+};
+
 const QUESTIONS_DATA = {
-  "חנוכה (שאלות AI)": [
+  "חנוכה": [
     {
       "type": "text",
       "content": "כמה ימים נמשך חג החנוכה?",
