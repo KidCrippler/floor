@@ -7,8 +7,8 @@ This document summarizes the complete implementation of the Duel Trivia Game acc
 ## 📁 Files Created
 
 ### HTML Files
-- ✅ `setup.html` - Pre-game configuration screen with category selection
-- ✅ `index.html` - Main game screen with RTL layout
+- ✅ `index.html` - Pre-game configuration screen with category selection (entry point)
+- ✅ `game.html` - Main game screen with RTL layout
 
 ### CSS Files
 - ✅ `css/style.css` - Main RTL/Hebrew styles optimized for large screens
@@ -103,7 +103,7 @@ This document summarizes the complete implementation of the Duel Trivia Game acc
 ## 🎮 How to Use
 
 ### Quick Start
-1. Open `setup.html` in Chrome
+1. Open `index.html` in Chrome
 2. Select a category
 3. Configure settings (or use defaults)
 4. Click "התחל משחק"
@@ -202,7 +202,7 @@ Every requirement from `DuelTriviaSpec.md` has been implemented:
 ## 🚀 Ready to Use!
 
 The game is complete and ready for deployment. Simply:
-1. Open `setup.html` to start (works directly from file system!)
+1. Open `index.html` to start (works directly from file system!)
 2. Add your own questions to `js/questionsData.js`
 3. Optionally add audio files to `sounds/`
 4. Optionally add images for visual questions

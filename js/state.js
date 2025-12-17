@@ -60,7 +60,7 @@ const GameState = (function() {
         
         if (!config) {
             console.error('No game configuration found!');
-            window.location.href = 'setup.html';
+            window.location.href = 'index.html';
             return false;
         }
 
@@ -259,7 +259,7 @@ const GameState = (function() {
 
     // Restart game
     function restart() {
-        window.location.href = 'setup.html';
+        window.location.href = 'index.html';
     }
 
     // Public API

@@ -3,10 +3,10 @@
 ## 🚀 כך מתחילים
 
 ### צעד 1: פתח את המשחק
-פתח את הקובץ `setup.html` בדפדפן (Chrome מומלץ).
+פתח את הקובץ `index.html` בדפדפן (Chrome מומלץ).
 - גרור את הקובץ לחלון הדפדפן, או
-- לחץ לחיצה כפולה על `setup.html`, או  
-- בטרמינל: `open setup.html`
+- לחץ לחיצה כפולה על `index.html`, או  
+- בטרמינל: `open index.html`
 
 ### צעד 2: הגדרות
 - **בחר קטגוריה** מהרשימה הנפתחת (גיאוגרפיה, היסטוריה, מדע, וכו')
@@ -95,9 +95,9 @@ const QUESTIONS_DATA = {
 
 **המשחק לא מתחיל?**
 - פתח את הקונסול (F12) ובדוק שגיאות
-- נסה לפתוח את `setup.html` מחדש
+- נסה לפתוח את `index.html` מחדש
 
 ---
 
-**מוכן? פתח את `setup.html` והתחל לשחק! 🎉**
+**מוכן? פתח את `index.html` והתחל לשחק! 🎉**
 

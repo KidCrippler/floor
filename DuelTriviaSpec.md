@@ -47,7 +47,8 @@ No backend, no HTTP requests beyond loading local JSON and images.
 
 ## **Folder Structure**
 
-    /index.html
+    /index.html              (setup/entry screen)
+    /game.html               (main game screen)
     /css/style.css
     /js/state.js
     /js/timers.js
@@ -202,7 +203,8 @@ No other keys should trigger actions.
 ## **Development Notes**
 
 -   No build tools required.
--   You can open `index.html` directly in a browser.
+-   You can open `index.html` (setup screen) directly in a browser.
+-   The setup screen redirects to `game.html` (main game).
 -   For convenience, a lightweight dev server (like `live-server`) can
     auto-reload.
 
@@ -212,7 +214,7 @@ No other keys should trigger actions.
 
 Once this spec is loaded into Cursor, you can start scaffolding:
 
-1.  Create the layout in `index.html`.
+1.  Create the setup screen in `index.html` and game layout in `game.html`.
 2.  Add RTL styling and Hebrew text.
 3.  Build the state machine and timer modules.
 4.  Connect keyboard controls.

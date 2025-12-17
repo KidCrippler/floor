@@ -65,7 +65,7 @@
         localStorage.setItem('gameConfig', JSON.stringify(formData));
 
         // Redirect to game
-        window.location.href = 'index.html';
+        window.location.href = 'game.html';
     }
 
     // Initialize

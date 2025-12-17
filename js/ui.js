@@ -509,7 +509,7 @@ const UI = (function() {
         
         if (!questionsLoaded) {
             alert('שגיאה בטעינת שאלות! חוזר למסך ההגדרות.');
-            window.location.href = 'setup.html';
+            window.location.href = 'index.html';
             return;
         }
 

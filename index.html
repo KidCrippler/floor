@@ -3,169 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>דו-קרב טריוויה</title>
+    <title>הגדרות דו-קרב טריוויה</title>
     <link rel="icon" type="image/png" href="assets/grid.png">
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Assistant', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .setup-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: 800;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-family: 'Assistant', sans-serif;
+            transition: border-color 0.3s;
+            text-align: right;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            flex: 1;
+        }
+
+        .radio-option input[type="radio"] {
+            margin-left: 8px;
+        }
+
+        .radio-option label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 0;
+        }
+
+        .radio-option input[type="radio"]:checked + label {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .radio-option input[type="radio"] {
+            display: none;
+        }
+
+        .start-button {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.5em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 30px;
+            font-family: 'Assistant', sans-serif;
+        }
+
+        .start-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .start-button:active {
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            font-weight: 700;
+        }
+
+        .loading {
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
 </head>
 <body>
-    <!-- Main Game Container -->
-    <div id="gameContainer" class="game-container">
+    <div class="setup-container">
+        <h1>⚡ הגדרות דו-קרב טריוויה</h1>
         
-        <!-- Timers Section -->
-        <div class="timers-section">
-            <!-- Right Contestant Timer -->
-            <div id="timerRight" class="timer-box timer-right">
-                <div class="active-indicator">▶ תורו כעת</div>
-                <div class="big-arrow right-arrow">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 10 50 L 70 10 L 70 35 L 90 35 L 90 65 L 70 65 L 70 90 Z" fill="currentColor"/>
-                    </svg>
+        <form id="setupForm">
+            <div class="form-group">
+                <label for="category">קטגוריה:</label>
+                <select id="category" name="category" required>
+                    <option value="">טוען קטגוריות...</option>
+                </select>
+            </div>
+
+            <div class="section-title">שמות מתמודדים</div>
+
+            <div class="form-group">
+                <label for="nameRight">שם מתמודד ימין:</label>
+                <input type="text" id="nameRight" name="nameRight" value="ימין" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nameLeft">שם מתמודד שמאל:</label>
+                <input type="text" id="nameLeft" name="nameLeft" value="שמאל" required>
+            </div>
+
+            <div class="section-title">זמני משחק</div>
+
+            <div class="form-group">
+                <label for="timeRight">זמן התחלתי מתמודד ימין (שניות):</label>
+                <input type="number" id="timeRight" name="timeRight" value="45" min="10" max="300" required>
+            </div>
+
+            <div class="form-group">
+                <label for="timeLeft">זמן התחלתי מתמודד שמאל (שניות):</label>
+                <input type="number" id="timeLeft" name="timeLeft" value="45" min="10" max="300" required>
+            </div>
+
+            <div class="form-group">
+                <label for="skipPenalty">עונש דילוג (שניות):</label>
+                <input type="number" id="skipPenalty" name="skipPenalty" value="3" min="1" max="10" required>
+            </div>
+
+            <div class="section-title">מי מתחיל?</div>
+
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="startRight" name="startingContestant" value="RIGHT" checked>
+                    <label for="startRight">ימין</label>
                 </div>
-                <div class="timer-label" id="labelRight">ימין</div>
-                <div class="timer-display" id="timeRight">45</div>
-            </div>
-
-            <!-- Left Contestant Timer -->
-            <div id="timerLeft" class="timer-box timer-left">
-                <div class="active-indicator">תורו כעת ◀</div>
-                <div class="big-arrow left-arrow">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M 90 50 L 30 10 L 30 35 L 10 35 L 10 65 L 30 65 L 30 90 Z" fill="currentColor"/>
-                    </svg>
-                </div>
-                <div class="timer-label" id="labelLeft">שמאל</div>
-                <div class="timer-display" id="timeLeft">45</div>
-            </div>
-        </div>
-
-        <!-- Question Section -->
-        <div class="question-section">
-            <div class="question-container">
-                <div id="questionContent" class="question-content">
-                    <!-- Question will be inserted here -->
-                </div>
-            </div>
-        </div>
-
-        <!-- Answer Overlay (shown during skip penalty) -->
-        <div id="answerOverlay" class="answer-overlay hidden">
-            <div class="answer-label">התשובה הנכונה:</div>
-            <div id="answerContent" class="answer-content"></div>
-        </div>
-
-        <!-- Correct Answer Toast (shown briefly after correct answer) -->
-        <div id="correctAnswerToast" class="correct-answer-toast hidden">
-            <div class="toast-label">התשובה:</div>
-            <div id="correctAnswerText" class="toast-answer"></div>
-        </div>
-
-        <!-- Info Bar -->
-        <div class="info-bar">
-            <div class="info-item">
-                <span class="info-label">קטגוריה:</span>
-                <span id="categoryDisplay" class="info-value">טוען...</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pause Menu Overlay -->
-    <div id="pauseMenu" class="pause-menu hidden">
-        <div class="pause-content">
-            <h2>המשחק מושהה</h2>
-            <div class="pause-instructions">
-                <p><strong>ESC</strong> - חזרה למשחק</p>
-                <p><strong>R</strong> - התחל מחדש</p>
-            </div>
-            <div class="pause-buttons">
-                <button id="resumeButton" class="pause-button">המשך משחק</button>
-                <button id="restartButton" class="pause-button pause-button-secondary">התחל מחדש</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Victory Screen -->
-    <div id="victoryScreen" class="victory-screen hidden">
-        <div class="victory-content">
-            <h1 class="victory-title">🏆 המשחק נגמר! 🏆</h1>
-            <h2 class="winner-announcement">
-                <span>המנצח הוא</span>
-                <span id="winnerName" class="winner-name">---</span>!
-            </h2>
-            
-            <div class="statistics">
-                <h3>סטטיסטיקות</h3>
-                
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-title" id="rightName">ימין</div>
-                        <div class="stat-row">
-                            <span class="stat-label">תשובות נכונות:</span>
-                            <span id="rightCorrect" class="stat-value">0</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">דילוגים:</span>
-                            <span id="rightSkips" class="stat-value">0</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">זמן שנותר:</span>
-                            <span id="rightTime" class="stat-value">0</span>
-                        </div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-title" id="leftName">שמאל</div>
-                        <div class="stat-row">
-                            <span class="stat-label">תשובות נכונות:</span>
-                            <span id="leftCorrect" class="stat-value">0</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">דילוגים:</span>
-                            <span id="leftSkips" class="stat-value">0</span>
-                        </div>
-                        <div class="stat-row">
-                            <span class="stat-label">זמן שנותר:</span>
-                            <span id="leftTime" class="stat-value">0</span>
-                        </div>
-                    </div>
+                <div class="radio-option">
+                    <input type="radio" id="startLeft" name="startingContestant" value="LEFT">
+                    <label for="startLeft">שמאל</label>
                 </div>
             </div>
 
-            <button id="playAgainButton" class="play-again-button">שחק שוב</button>
-        </div>
+            <button type="submit" class="start-button">התחל משחק 🎮</button>
+        </form>
     </div>
 
-    <!-- Ready Screen -->
-    <div id="readyScreen" class="ready-screen hidden">
-        <div class="ready-content">
-            <h2>מוכנים?</h2>
-            <p class="ready-instruction">לחצו על מקש כלשהו להתחלה</p>
-            <div class="press-key-indicator">⌨️</div>
-        </div>
-    </div>
-
-    <!-- Countdown Screen -->
-    <div id="countdownScreen" class="countdown-screen hidden">
-        <div class="countdown-number" id="countdownNumber">3</div>
-    </div>
-
-    <!-- Loading Screen -->
-    <div id="loadingScreen" class="loading-screen">
-        <div class="loading-content">
-            <div class="loading-spinner"></div>
-            <p>טוען משחק...</p>
-        </div>
-    </div>
-
-    <!-- Scripts -->
     <script src="js/questionsData.js"></script>
-    <script src="js/state.js"></script>
-    <script src="js/timers.js"></script>
-    <script src="js/questions.js"></script>
-    <script src="js/audio.js"></script>
-    <script src="js/keyboard.js"></script>
-    <script src="js/ui.js"></script>
+    <script src="js/setup.js"></script>
 </body>
 </html>
 

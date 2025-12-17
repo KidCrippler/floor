@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="he">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דו-קרב טריוויה</title>
+    <link rel="icon" type="image/png" href="assets/grid.png">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Main Game Container -->
+    <div id="gameContainer" class="game-container">
+        
+        <!-- Timers Section -->
+        <div class="timers-section">
+            <!-- Right Contestant Timer -->
+            <div id="timerRight" class="timer-box timer-right">
+                <div class="active-indicator">▶ תורו כעת</div>
+                <div class="big-arrow right-arrow">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 10 50 L 70 10 L 70 35 L 90 35 L 90 65 L 70 65 L 70 90 Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="timer-label" id="labelRight">ימין</div>
+                <div class="timer-display" id="timeRight">45</div>
+            </div>
+
+            <!-- Left Contestant Timer -->
+            <div id="timerLeft" class="timer-box timer-left">
+                <div class="active-indicator">תורו כעת ◀</div>
+                <div class="big-arrow left-arrow">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M 90 50 L 30 10 L 30 35 L 10 35 L 10 65 L 30 65 L 30 90 Z" fill="currentColor"/>
+                    </svg>
+                </div>
+                <div class="timer-label" id="labelLeft">שמאל</div>
+                <div class="timer-display" id="timeLeft">45</div>
+            </div>
+        </div>
+
+        <!-- Question Section -->
+        <div class="question-section">
+            <div class="question-container">
+                <div id="questionContent" class="question-content">
+                    <!-- Question will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Overlay (shown during skip penalty) -->
+        <div id="answerOverlay" class="answer-overlay hidden">
+            <div class="answer-label">התשובה הנכונה:</div>
+            <div id="answerContent" class="answer-content"></div>
+        </div>
+
+        <!-- Correct Answer Toast (shown briefly after correct answer) -->
+        <div id="correctAnswerToast" class="correct-answer-toast hidden">
+            <div class="toast-label">התשובה:</div>
+            <div id="correctAnswerText" class="toast-answer"></div>
+        </div>
+
+        <!-- Info Bar -->
+        <div class="info-bar">
+            <div class="info-item">
+                <span class="info-label">קטגוריה:</span>
+                <span id="categoryDisplay" class="info-value">טוען...</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pause Menu Overlay -->
+    <div id="pauseMenu" class="pause-menu hidden">
+        <div class="pause-content">
+            <h2>המשחק מושהה</h2>
+            <div class="pause-instructions">
+                <p><strong>ESC</strong> - חזרה למשחק</p>
+                <p><strong>R</strong> - התחל מחדש</p>
+            </div>
+            <div class="pause-buttons">
+                <button id="resumeButton" class="pause-button">המשך משחק</button>
+                <button id="restartButton" class="pause-button pause-button-secondary">התחל מחדש</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Victory Screen -->
+    <div id="victoryScreen" class="victory-screen hidden">
+        <div class="victory-content">
+            <h1 class="victory-title">🏆 המשחק נגמר! 🏆</h1>
+            <h2 class="winner-announcement">
+                <span>המנצח הוא</span>
+                <span id="winnerName" class="winner-name">---</span>!
+            </h2>
+            
+            <div class="statistics">
+                <h3>סטטיסטיקות</h3>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-title" id="rightName">ימין</div>
+                        <div class="stat-row">
+                            <span class="stat-label">תשובות נכונות:</span>
+                            <span id="rightCorrect" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">דילוגים:</span>
+                            <span id="rightSkips" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">זמן שנותר:</span>
+                            <span id="rightTime" class="stat-value">0</span>
+                        </div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-title" id="leftName">שמאל</div>
+                        <div class="stat-row">
+                            <span class="stat-label">תשובות נכונות:</span>
+                            <span id="leftCorrect" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">דילוגים:</span>
+                            <span id="leftSkips" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">זמן שנותר:</span>
+                            <span id="leftTime" class="stat-value">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button id="playAgainButton" class="play-again-button">שחק שוב</button>
+        </div>
+    </div>
+
+    <!-- Ready Screen -->
+    <div id="readyScreen" class="ready-screen hidden">
+        <div class="ready-content">
+            <h2>מוכנים?</h2>
+            <p class="ready-instruction">לחצו על מקש כלשהו להתחלה</p>
+            <div class="press-key-indicator">⌨️</div>
+        </div>
+    </div>
+
+    <!-- Countdown Screen -->
+    <div id="countdownScreen" class="countdown-screen hidden">
+        <div class="countdown-number" id="countdownNumber">3</div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div id="loadingScreen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-spinner"></div>
+            <p>טוען משחק...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/questionsData.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/timers.js"></script>
+    <script src="js/questions.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/keyboard.js"></script>
+    <script src="js/ui.js"></script>
+</body>
+</html>
+
