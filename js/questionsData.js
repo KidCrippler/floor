@@ -314,13 +314,8 @@ const QUESTIONS_DATA = {
   "חנוכה - תמונות": [
     {
       "type": "image",
-      "content": "images/hanukkah/greece.webp",
-      "answer": "יוון"
-    },
-    {
-      "type": "image",
-      "content": "images/hanukkah/dmei.webp",
-      "answer": "דמי חנוכה"
+      "content": "images/hanukkah/hanukkiyah.webp",
+      "answer": "חנוכייה"
     },
     {
       "type": "image",
@@ -329,18 +324,8 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "image",
-      "content": "images/hanukkah/pah_shemen.webp",
-      "answer": "פך שמן"
-    },
-    {
-      "type": "image",
       "content": "images/hanukkah/levivot.webp",
       "answer": "לביבות"
-    },
-    {
-      "type": "image",
-      "content": "images/hanukkah/hanukkiyah.webp",
-      "answer": "חנוכייה"
     },
     {
       "type": "image",
@@ -354,6 +339,26 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "image",
+      "content": "images/hanukkah/dmei.webp",
+      "answer": "דמי חנוכה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/festigal.webp",
+      "answer": "פסטיגל"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/pah_shemen.webp",
+      "answer": "פך שמן"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/roladin.webp",
+      "answer": "רולדין"
+    },
+    {
+      "type": "image",
       "content": "images/hanukkah/yehuda.webp",
       "answer": "יהודה המכבי"
     },
@@ -364,13 +369,33 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "image",
+      "content": "images/hanukkah/matitiyahu.webp",
+      "answer": "מתתיהו החשמונאי"
+    },
+    {
+      "type": "image",
       "content": "images/hanukkah/menorah.webp",
       "answer": "מנורת בית המקדש"
     },
     {
       "type": "image",
+      "content": "images/hanukkah/lapid.webp",
+      "answer": "לפיד"
+    },
+    {
+      "type": "image",
       "content": "images/hanukkah/mikdash.webp",
       "answer": "בית המקדש"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/modiin.webp",
+      "answer": "מודיעין"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah/greece.webp",
+      "answer": "יוון"
     },
     {
       "type": "image",
