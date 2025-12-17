@@ -2,7 +2,7 @@
 // To add new questions, edit this file directly
 
 const QUESTIONS_DATA = {
-  "חנוכה": [
+  "חנוכה (שאלות AI)": [
     {
       "type": "text",
       "content": "כמה ימים נמשך חג החנוכה?",
