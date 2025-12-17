@@ -207,13 +207,13 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "text",
-      "content": "מה פירוש האותיות נ ג ה פ על הסביבון?",
+      "content": "מה פירוש האותיות נ׳ ג׳ ה׳ פ׳ על הסביבון?",
       "answer": "נס גדול היה פה"
     },
     {
       "type": "text",
-      "content": "איזה שיר מפורסם שרים בחנוכה?",
-      "answer": "מעוז צור"
+      "content": "איזה שיר נהוג לשיר אחרי הדלקת נרות חנוכה?",
+      "answer": "מעוז צור או הנרות הללו"
     },
     {
       "type": "text",
@@ -232,13 +232,8 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "text",
-      "content": "באיזה שמן הכי מהודר להדליק?",
+      "content": "באיזה שמן נהוג להדליק את החנוכיה?",
       "answer": "שמן זית"
-    },
-    {
-      "type": "text",
-      "content": "מהו הנס הקשור לכמות השמן?",
-      "answer": "נס פך השמן"
     },
     {
       "type": "text",
@@ -247,13 +242,13 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "text",
-      "content": "מי טיהר את בית המקדש מהפסלים?",
-      "answer": "יהודה המכבי"
+      "content": "מה היה כינויו של יהודה?",
+      "answer": "המכבי"
     },
     {
       "type": "text",
-      "content": "מה היה כינויו של יהודה?",
-      "answer": "המכבי"
+      "content": "מי טיהר את בית המקדש מהפסלים?",
+      "answer": "יהודה המכבי"
     },
     {
       "type": "text",
@@ -282,18 +277,8 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "text",
-      "content": "מה שמה של האישה הגיבורה בחנוכה?",
-      "answer": "יהודית"
-    },
-    {
-      "type": "text",
       "content": "כמה נרות מדליקים בסך הכל בכל החג?",
       "answer": "44"
-    },
-    {
-      "type": "text",
-      "content": "מה היו ראשי התיבות על דגלו של יהודה?",
-      "answer": "מכב\"י"
     },
     {
       "type": "text",
@@ -307,23 +292,8 @@ const QUESTIONS_DATA = {
     },
     {
       "type": "text",
-      "content": "על שם מה נקרא חג החנוכה?",
-      "answer": "חנוכת המזבח"
-    },
-    {
-      "type": "text",
-      "content": "איך נקראו המתנגדים למתייוונים?",
-      "answer": "המכבים"
-    },
-    {
-      "type": "text",
       "content": "מהו שם נוסף לחג החנוכה?",
       "answer": "חג האורים"
-    },
-    {
-      "type": "text",
-      "content": "את ראשו של מי ערפה יהודית?",
-      "answer": "הולופרנס"
     },
     {
       "type": "text",
@@ -344,68 +314,160 @@ const QUESTIONS_DATA = {
   "חנוכה - תמונות": [
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_23bngd23bngd23bn.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/greece.webp",
+      "answer": "יוון"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_2827fh2827fh2827.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/dmei.webp",
+      "answer": "דמי חנוכה"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_4s3w7i4s3w7i4s3w.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/sufganiyot.webp",
+      "answer": "סופגניות"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_7n4kpd7n4kpd7n4k.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/pah_shemen.webp",
+      "answer": "פך שמן"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_8pt0dk8pt0dk8pt0.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/levivot.webp",
+      "answer": "לביבות"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_9lt2j79lt2j79lt2.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/hanukkiyah.webp",
+      "answer": "חנוכייה"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_d2hn0td2hn0td2hn.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/nerot.webp",
+      "answer": "נרות חנוכה"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_dzx15ddzx15ddzx1.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/sevivon.webp",
+      "answer": "סביבון"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_kt7wcokt7wcokt7w.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/yehuda.webp",
+      "answer": "יהודה המכבי"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_njz1njz1njz1njz1.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/antiochus.webp",
+      "answer": "אנטיוכוס"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_o2y184o2y184o2y1.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/menorah.webp",
+      "answer": "מנורת בית המקדש"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_t5652xt5652xt565.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/mikdash.webp",
+      "answer": "בית המקדש"
     },
     {
       "type": "image",
-      "content": "images/hanukkah/Gemini_Generated_Image_uxqxhzuxqxhzuxqx.webp",
-      "answer": "תשובה"
+      "content": "images/hanukkah/elazar.webp",
+      "answer": "אלעזר החורני"
+    }
+  ],
+  "חנוכה - ביטויים": [
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/or_yarok.webp",
+      "answer": "אור ירוק"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/or_adom.webp",
+      "answer": "אור אדום"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/or_biktse.webp",
+      "answer": "אור בקצה המנהרה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/al_rosh_haganav.webp",
+      "answer": "על ראש הגנב בוער הכובע"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/ner_leraglav.webp",
+      "answer": "נר לרגליו"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/esh_haya.webp",
+      "answer": "אש חיה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/hipes_banerot.webp",
+      "answer": "חיפש בנרות"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/shemen.webp",
+      "answer": "הוסיף שמן למדורה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/al_esh_ktana.webp",
+      "answer": "על אש קטנה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/al_hapanim.webp",
+      "answer": "אש על הפנים"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/shafah_or.webp",
+      "answer": "שפך אור"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/oru_einav.webp",
+      "answer": "אורו עיניו"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/ner_al_hahalon.webp",
+      "answer": "נר על החלון"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/hafsakat_esh.webp",
+      "answer": "הפסקת אש"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/tahat_esh.webp",
+      "answer": "תחת אש"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/nes_gadol_haya_po.webp",
+      "answer": "נס גדול היה פה"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/nero_yair.webp",
+      "answer": "נרו יאיר"
+    },
+    {
+      "type": "image",
+      "content": "images/hanukkah-expr/esh_bisde.webp",
+      "answer": "אש בשדה קוצים"
     }
   ]
 };
