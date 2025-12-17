@@ -302,7 +302,7 @@
     }
 }
 
-/* Toast Slide In Animation */
+/* Toast Slide In Animation (for image questions) */
 @keyframes toastSlideIn {
     from {
         transform: translateX(150%);
@@ -314,7 +314,7 @@
     }
 }
 
-/* Toast Fade Out Animation */
+/* Toast Fade Out Animation (for image questions) */
 @keyframes toastFadeOut {
     from {
         transform: translateX(0);
@@ -326,7 +326,98 @@
     }
 }
 
-.correct-answer-toast.fade-out {
-    animation: toastFadeOut 0.3s ease-in forwards;
+/* Slide Up Animation (for text questions) */
+@keyframes correctAnswerSlideUp {
+    0% {
+        transform: translateX(-50%) translateY(100px);
+        opacity: 0;
+    }
+    50% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Slide Down Animation (for text questions) */
+@keyframes correctAnswerSlideDown {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(50px);
+        opacity: 0;
+    }
+}
+
+/* Bounce Down Animation (for image questions - from top) */
+@keyframes correctAnswerBounceDown {
+    0% {
+        transform: translateX(-50%) translateY(-150px);
+        opacity: 0;
+    }
+    60% {
+        transform: translateX(-50%) translateY(10px);
+        opacity: 1;
+    }
+    80% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+    100% {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Fade Up Animation (for image questions - exit) */
+@keyframes correctAnswerFadeUp {
+    from {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-50%) translateY(-30px);
+        opacity: 0;
+    }
+}
+
+/* Correct Answer Appear Animation - Bouncy entrance */
+@keyframes correctAnswerAppear {
+    0% {
+        transform: translate(-50%, -50%) scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+/* Correct Answer Fade Out Animation */
+@keyframes correctAnswerFadeOut {
+    from {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, -50%) scale(0.8);
+        opacity: 0;
+    }
+}
+
+/* Answer Pulse Animation - Subtle pulse for the answer text */
+@keyframes answerPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
 }
 

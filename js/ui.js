@@ -184,6 +184,9 @@ const UI = (function() {
 
         GameState.setCurrentQuestion(question);
         displayQuestion(question);
+        
+        // Clear the showing answer flag to allow Space key again
+        KeyboardController.clearShowingAnswer();
     }
 
     // Display a question
@@ -355,16 +358,30 @@ const UI = (function() {
 
     // Show correct answer toast
     function showCorrectAnswerToast(answer) {
-        elements.correctAnswerText.textContent = answer;
-        elements.correctAnswerToast.classList.remove('hidden', 'fade-out');
+        const currentQuestion = GameState.getCurrentQuestion();
+        const questionType = currentQuestion ? currentQuestion.type : 'text';
         
-        // Hide after 2.5 seconds
+        elements.correctAnswerText.textContent = answer;
+        
+        // Remove all previous classes
+        elements.correctAnswerToast.classList.remove('hidden', 'fade-out', 'text-question', 'image-question');
+        
+        // Add appropriate class based on question type
+        if (questionType === 'image') {
+            elements.correctAnswerToast.classList.add('image-question');
+        } else {
+            elements.correctAnswerToast.classList.add('text-question');
+        }
+        
+        // Both question types: show for 1 second, then load next question
         setTimeout(() => {
             elements.correctAnswerToast.classList.add('fade-out');
             setTimeout(() => {
                 elements.correctAnswerToast.classList.add('hidden');
+                // Load next question immediately after hiding the answer
+                loadNextQuestion();
             }, 300);
-        }, 2500);
+        }, 1000);
     }
 
     // Initialize game display

@@ -4,6 +4,7 @@ const KeyboardController = (function() {
     'use strict';
 
     let enabled = false;
+    let showingAnswer = false; // Flag to prevent Space during answer display
 
     // Initialize keyboard controls
     function init() {
@@ -65,7 +66,10 @@ const KeyboardController = (function() {
     // Handle keys during running state
     function handleRunningStateKeys(key, code) {
         if (code === 'Space' || key === ' ') {
-            handleCorrectAnswer();
+            // Ignore Space if we're currently showing an answer
+            if (!showingAnswer) {
+                handleCorrectAnswer();
+            }
         } else if (key === 's') {
             handleSkip();
         } else if (key === 'escape') {
@@ -95,6 +99,9 @@ const KeyboardController = (function() {
     function handleCorrectAnswer() {
         console.log('Correct answer!');
         
+        // Set flag to prevent additional Space presses
+        showingAnswer = true;
+        
         // If we're in countdown state, start timers immediately
         if (GameState.getCurrentState() === GameState.STATES.COUNTDOWN) {
             console.log('Starting timers early due to key press during countdown');
@@ -119,10 +126,13 @@ const KeyboardController = (function() {
         // Update game state
         GameState.handleCorrect();
         
-        // Load next question after a brief delay for animation
-        setTimeout(() => {
-            UI.loadNextQuestion();
-        }, 600);
+        // UI will handle loading the next question after showing answer for 1 second
+        // (no need to call loadNextQuestion here anymore)
+    }
+    
+    // Clear the showing answer flag (called when next question loads)
+    function clearShowingAnswer() {
+        showingAnswer = false;
     }
 
     // Skip handler (S)
@@ -198,7 +208,8 @@ const KeyboardController = (function() {
     return {
         init,
         enable,
-        disable
+        disable,
+        clearShowingAnswer
     };
 })();
 

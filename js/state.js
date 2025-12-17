@@ -253,6 +253,10 @@ const GameState = (function() {
         return state.contestants[side];
     }
 
+    function getCurrentQuestion() {
+        return state.currentQuestion;
+    }
+
     // Restart game
     function restart() {
         window.location.href = 'setup.html';
@@ -280,6 +284,7 @@ const GameState = (function() {
         getCurrentState,
         getActiveContestant,
         getContestant,
+        getCurrentQuestion,
         restart
     };
 })();
