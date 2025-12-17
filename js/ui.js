@@ -5,6 +5,48 @@ const UI = (function() {
 
     // DOM elements
     let elements = {};
+    
+    // Fullscreen utilities
+    const FullscreenManager = {
+        // Request fullscreen
+        enter: function() {
+            const elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen().catch(err => {
+                    console.warn('Could not enter fullscreen:', err);
+                });
+            } else if (elem.webkitRequestFullscreen) { // Safari
+                elem.webkitRequestFullscreen();
+            } else if (elem.mozRequestFullScreen) { // Firefox
+                elem.mozRequestFullScreen();
+            } else if (elem.msRequestFullscreen) { // IE/Edge
+                elem.msRequestFullscreen();
+            }
+        },
+        
+        // Exit fullscreen
+        exit: function() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen().catch(err => {
+                    console.warn('Could not exit fullscreen:', err);
+                });
+            } else if (document.webkitExitFullscreen) { // Safari
+                document.webkitExitFullscreen();
+            } else if (document.mozCancelFullScreen) { // Firefox
+                document.mozCancelFullScreen();
+            } else if (document.msExitFullscreen) { // IE/Edge
+                document.msExitFullscreen();
+            }
+        },
+        
+        // Check if currently in fullscreen
+        isFullscreen: function() {
+            return !!(document.fullscreenElement || 
+                     document.webkitFullscreenElement || 
+                     document.mozFullScreenElement ||
+                     document.msFullscreenElement);
+        }
+    };
 
     // Initialize UI
     function init() {
@@ -271,6 +313,10 @@ const UI = (function() {
         // Show victory screen
         elements.victoryScreen.classList.remove('hidden');
 
+        // Exit fullscreen mode
+        console.log('🖥️ Exiting fullscreen mode...');
+        FullscreenManager.exit();
+
         // Play game over sound
         AudioManager.playGameOver();
 
@@ -305,6 +351,10 @@ const UI = (function() {
     async function showCountdown() {
         return new Promise(async (resolve) => {
             elements.countdownScreen.classList.remove('hidden');
+            
+            // Enter fullscreen mode
+            console.log('🖥️ Entering fullscreen mode...');
+            FullscreenManager.enter();
             
             // Start playing countdown sound (but don't wait for it to finish)
             console.log('🔊 Playing countdown sound...');
